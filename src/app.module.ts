@@ -31,8 +31,8 @@ import { Supplier } from 'src/supplier/entity/supplier.entity';
         // entities: [Products,StockLog,Supplier], // it works
       }),
     }),
-    ProductModule,
     SupplierModule,
+    ProductModule,
     StockLogModule,
   ],
   controllers: [AppController],
