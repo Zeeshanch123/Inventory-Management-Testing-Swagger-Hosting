@@ -1,7 +1,14 @@
+// @ts-ignore
+if (typeof global.crypto === 'undefined') {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  global.crypto = require('crypto');
+}
+
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import getPort from 'get-port';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -23,5 +30,6 @@ async function bootstrap() {
   const port = process.env.PORT ?? 3000;
   await app.listen(port);
   console.log(`Server is running on port ${port}`);
+  console.log("await getPort()=>>>>>>>>", await getPort());
 }
 bootstrap();
