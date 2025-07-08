@@ -19,7 +19,7 @@ import { Supplier } from 'src/supplier/entity/supplier.entity';
       inject: [ConfigService],
       useFactory: (config: ConfigService) => ({
         type: 'postgres',
-        url: config.get<string>('DATABASE_URL'),
+        url: config.get<string>('URL'), // For Production
         // host: config.get<string>('DB_HOST'),
         // port: config.get<number>('DB_PORT'),
         // username: config.get<string>('DB_USER'),
