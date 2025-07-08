@@ -19,17 +19,18 @@ import { Supplier } from 'src/supplier/entity/supplier.entity';
       inject: [ConfigService],
       useFactory: (config: ConfigService) => ({
         type: 'postgres',
-        url: config.get<string>('URL'), // For Production
+        url: config.get<string>('LIVE_DB_URL'), // For Production
+        // url: config.get<string>('LOCAL_DB_URL'), // For Development
         // host: config.get<string>('DB_HOST'),
         // port: config.get<number>('DB_PORT'),
         // username: config.get<string>('DB_USER'),
         // password: config.get<string>('DB_PASSWORD'),
         // database: config.get<string>('DB_NAME'),
+        entities: [__dirname + '/**/*.entity{.ts,.js}'], // it works
+        // entities: [Products,StockLog,Supplier], // it works
         // synchronize: false, // ✅Set to false in production level for end user as for clients || use migrations in real world
         synchronize: true, // Set to true in development level for developers;
         autoLoadEntities: true,
-        entities: [__dirname + '/**/*.entity{.ts,.js}'], // it works
-        // entities: [Products,StockLog,Supplier], // it works
       }),
     }),
     SupplierModule,
